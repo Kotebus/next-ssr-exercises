@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {CSSProperties} from 'react';
 import { Loader } from 'react-feather';
 
 import styles from './Spinner.module.css';
@@ -17,7 +17,7 @@ function Spinner({
         '--speed': `${speed}ms`,
         width: size,
         height: size,
-      }}
+      } as CSSProperties}
     >
       <Loader color={color} size={size} />
     </span>
