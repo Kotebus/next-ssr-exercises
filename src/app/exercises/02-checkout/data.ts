@@ -1,9 +1,18 @@
-const DATA = [
+interface IDataRaw {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  price: number;
+  quantity?: number;
+}
+
+const DATA:IDataRaw[] = [
   {
     id: 'hk123',
     imageSrc: '/shopping-cart-coffee-machine.jpg',
     imageAlt:
-      'A pink drip coffee machine with the “Hello Kitty” logo',
+        'A pink drip coffee machine with the “Hello Kitty” logo',
     title: '“Hello Coffee”',
     price: 89.99,
   },
@@ -24,4 +33,16 @@ const DATA = [
   },
 ];
 
-export default DATA;
+export interface IData {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  price: number;
+  quantity: number;
+}
+
+export const getDataWithQuantity = () =>
+    DATA.map((item: IDataRaw) => <IData>{...item, quantity: 0});
+
+export default getDataWithQuantity;

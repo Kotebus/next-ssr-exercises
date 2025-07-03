@@ -2,11 +2,16 @@
 import React from 'react';
 
 import CartTable from './CartTable';
+import {IData} from "./data";
 
 function CheckoutFlow({
   items,
   taxRate,
   handleDeleteItem,
+} : {
+  items: IData[],
+  taxRate: number,
+  handleDeleteItem: (item: IData) => void,
 }) {
   if (items.length === 0) {
     return (
@@ -52,7 +57,7 @@ function CheckoutFlow({
   );
 }
 
-function calculateSubtotal(items) {
+function calculateSubtotal(items: IData[]) {
   let subtotal = 0;
 
   items.forEach((item) => {

@@ -1,7 +1,11 @@
 'use client';
 import React from 'react';
+import {IData} from "./data";
 
-function StoreItem({ item, handleAddToCart }) {
+function StoreItem({ item, handleAddToCart } : {
+    item: IData,
+    handleAddToCart: (item: IData) => void,
+}) {
   const price = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',

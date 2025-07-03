@@ -1,6 +1,9 @@
 import { produce } from 'immer';
+import {IData} from "./data";
 
-function reducer(state, action) {
+export type ShopActions = {type: 'add-item' | 'delete-item', item: IData};
+
+function reducer(state: IData[], action: ShopActions) {
   return produce(state, (draftState) => {
     switch (action.type) {
       case 'add-item': {
