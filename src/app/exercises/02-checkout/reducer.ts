@@ -1,11 +1,19 @@
 import { produce } from 'immer';
 import {IData} from "./data";
 
-export type ShopActions = {type: 'add-item' | 'delete-item', item: IData};
+export type ShopActions =
+    |{type: 'add-item' | 'delete-item', item: IData}
+    |{type: 'set-initial-state', items: IData[]};
 
-function reducer(state: IData[], action: ShopActions) {
+function reducer(state: IData[] | null, action: ShopActions) {
   return produce(state, (draftState) => {
     switch (action.type) {
+
+      case 'set-initial-state': {
+        draftState.push(...action.items);
+        return;
+      }
+
       case 'add-item': {
         const itemIndex = state.findIndex(
           (item) => item.id === action.item.id

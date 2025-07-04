@@ -1,8 +1,16 @@
 'use client';
-import React from 'react';
+import React, {PropsWithChildren} from 'react';
 
 import CartTable from './CartTable';
 import {IData} from "./data";
+
+export function EmptyCheckoutFlow({children} : PropsWithChildren) {
+  return (
+      <div className="checkout-flow empty">
+        {children}
+      </div>
+  );
+}
 
 function CheckoutFlow({
   items,
@@ -15,9 +23,9 @@ function CheckoutFlow({
 }) {
   if (items.length === 0) {
     return (
-      <div className="checkout-flow empty">
+      <EmptyCheckoutFlow>
         <p>Your Cart is Empty</p>
-      </div>
+      </EmptyCheckoutFlow>
     );
   }
 
