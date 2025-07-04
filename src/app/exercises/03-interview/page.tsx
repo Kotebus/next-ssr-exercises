@@ -1,14 +1,21 @@
 'use client';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 import Interview from './Interview';
 import './styles.css';
 
 function InterviewExercise() {
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 500px)',
+  const [isDesktop, setIsDesktop] = React.useState(true);
+
+  const isDesktopMediaQuery = useMediaQuery({
+    query: '(min-width: 600px)',
   });
+
+  useEffect(() => {
+    setIsDesktop(isDesktopMediaQuery);
+  }, [isDesktopMediaQuery]);
+
 
   return (
     <main>
